@@ -1,0 +1,28 @@
+{
+  "name": "webdb-iii-challenge",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "knex": "^0.17.3",
+    "node": "^12.4.0",
+    "nodemon": "^1.19.1",
+    "sqlite3": "^4.0.8"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ba-Zen/webdb-iii-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ba-Zen/webdb-iii-challenge/issues"
+  },
+  "homepage": "https://github.com/Ba-Zen/webdb-iii-challenge#readme"
+}
