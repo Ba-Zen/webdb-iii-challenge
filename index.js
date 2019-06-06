@@ -112,8 +112,11 @@ server.get('/api/students', (req,res) => {
 })
 
 server.get('/api/students/:id', (req, res) => {
+    const cohortId = req.params.id;
     db('students')
-    .where({ id: req.params.id })
+    .join('cohorts', 'students.cohorts_id', 'cohorts.id')
+    .select('students.id', 'students.name', 'cohorts.name as cohort')
+    .where({ cohorts_id: cohortId })
     .then(student => {
         if(student) {
             res.status(200).json(student)
@@ -125,6 +128,20 @@ server.get('/api/students/:id', (req, res) => {
         res.status(500).json(err)
     })
 })
+
+// server.get('/api/cohorts/:id/students', (req, res) => {
+//     const cohortId = req.params.id;
+//     db('students')
+//     .join('cohorts', 'students.cohorts_id', 'cohorts.id')
+//     .select('students.id', 'students.name', 'cohorts.id as cohortId', 'cohorts.name as cohort')
+//     .where({ cohorts_id: cohortId })
+//     .then(response => {
+//         res.status(200).json(response)
+//     })
+//     .catch(err => {
+//         res.status(500).json(err)
+//     })
+// })
 
 server.post('/api/students', (req, res) => {
     db('students')
